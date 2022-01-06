@@ -1,0 +1,30 @@
+{
+  "name": "framwork-study-ant-design-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "dev": "yarn routes && vite serve site",
+    "compile": "node antd-tools/cli/run.js compile",
+    "lint:demo": "eslint --fix components/*/demo/*.vue",
+    "routes": "esno site/scripts/generateRoutes.js",
+    "tsc": "tsc --noEmit",
+    "site": "yarn routes && ./node_modules/vite/bin/vite.js build site --base=https://next.antdv.com/",
+    "pub:site": "npm run site && node site/scripts/pushToOSS.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-vue": "^2.0.1",
+    "@vue/compiler-sfc": "^3.2.26",
+    "esbuild": "^0.14.10",
+    "eslint": "^8.6.0",
+    "esno": "^0.13.0",
+    "globby": "^12.0.2",
+    "gray-matter": "^4.0.3",
+    "vite": "^2.7.10",
+    "vue-loader": "^15.9.8"
+  }
+}
