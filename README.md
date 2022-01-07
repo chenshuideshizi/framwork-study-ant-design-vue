@@ -8,6 +8,7 @@
 - Vite 默认支持 ESM 语法，或在 package.json 中配置  type: "module" 来开启 ESM 语法
 
 - 为什么 ant-design-vue 不用在 site 目录下安装依赖就能启动项目
+原因：没有根目录装 vue 导致的
 
 ### issue
 - generateRoutes 单词拼错了
@@ -35,6 +36,6 @@
 - 使用 vite 搭建 vue 项目
 当前使用的 vite 创建的项目，没有自己搭建项目，并且没有使用 ts, TODO:后续补上
 
-    - 用到的插件
+    - 用到的插件， 这2个插件的作用是什么
         - @vitejs/plugin-vue
         - @vue/compiler-sfc
