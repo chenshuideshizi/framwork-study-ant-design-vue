@@ -1,8 +1,7 @@
 <template>
   <div class="layout-index">
-    <router-view>
-      <p>Layout Index</p>
-    </router-view>
+    <h2>Layout Index Title</h2>
+    <router-view></router-view><!-- 为什么 router-view 标签内不能写内容 -->
   </div>
 </template>
 

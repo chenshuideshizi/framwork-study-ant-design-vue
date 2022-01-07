@@ -1,8 +1,20 @@
 /* eslint-disable import/no-unresolved */
 import Layout from '../layouts'
+import demoRoutes from './demoRoutes';
 
 import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
+  {
+    path: '/components',
+    component: Layout,
+    children: [
+      // {
+      //   path: 'overview:lang(.*)',
+      //   component: () => import('../views/ComponentOverview.vue'),
+      // },
+      ...demoRoutes,
+    ],
+  },
   {
     path: '/hello-world',
     meta: { title: 'Hello World' },
