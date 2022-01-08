@@ -8,14 +8,17 @@ import escapeHtml from 'escape-html';
 import fetchCode from './utils/fetchCode';
 import tsToJs from './utils/tsToJs';
 
+
+
 export function createMarkdownToVueRenderFn(
-  root = process.cwd(),
+  root= process.cwd(),
   options = {},
 ) {
   const md = createMarkdownRenderer(options);
 
   return async (src, file) => {
     const relativePath = slash(path.relative(root, file));
+
 
     const start = Date.now();
 

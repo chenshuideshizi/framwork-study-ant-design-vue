@@ -1,11 +1,7 @@
 import fetchCode from '../md/utils/fetchCode';
 
-export function createVueToMarkdownRenderFn(root) {
-  return (src, file) => {
-
-
-
-    const start = Date.now();
+export function createVueToMarkdownRenderFn() {
+  return (src) => {
     const docs = fetchCode(src, 'docs')?.trim();
     const template = fetchCode(src, 'template');
     const script = fetchCode(src, 'script');

@@ -39,3 +39,81 @@
     - 用到的插件， 这2个插件的作用是什么
         - @vitejs/plugin-vue
         - @vue/compiler-sfc
+
+
+## 从 Vue Design Vue 中学习工和化
+
+### 1. 自动把组件生成路由
+
+```js
+{
+  "scripts":{
+    "predev": "node node_modules/esbuild/install.js",
+    "dev": "yarn predev && yarn routes && vite serve site",
+    "routes": "node site/scripts/genrateRoutes.js"
+  }
+}
+```
+
+### 2. 自动化测试
+
+```js
+{
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest --config .jest.js",
+  }
+}
+```
+
+
+### 3. 自动化编译
+
+```js
+{
+  "scripts": {
+    "compile": "node antd-tools/cli/run.js compile",
+  }
+}
+```
+
+### 4. 自动化发布
+
+```js
+{
+  "scripts": {
+    "pub": "node --max_old_space_size=8192 antd-tools/cli/run.js pub",
+    "pub-with-ci": "node antd-tools/cli/run.js pub-with-ci",
+    "prepublishOnly": "node antd-tools/cli/run.js guard",
+    "pre-publish": "node ./scripts/prepub && npm run generator-webtypes",
+    "site": "yarn routes && ./node_modules/vite/bin/vite.js build site --base=https://next.antdv.com/",
+    "pub:site": "npm run site && node site/scripts/pushToOSS.js",
+  }
+}
+```
+
+### 5. 自动化代码格式化
+
+```js
+{
+  "scripts": {
+    "prettier": "prettier -c --write **/*",
+    "pretty-quick": "pretty-quick",
+    "lint": "npm run tsc && npm run lint:demo && npm run lint:md && npm run lint:script && npm run lint:site",
+    "lint:components": "eslint --fix --ext .jsx,.js,.ts,.tsx ./components",
+    "lint:demo": "eslint --fix components/*/demo/*.vue",
+    "lint:md": "eslint --fix *.md",
+    "lint:script": "eslint . --ext '.js,.jsx,.ts,.tsx'",
+    "lint:site": "eslint -c ./.eslintrc.js --fix --ext .jsx,.js,.ts,.tsx,vue ./site",
+    "lint:style": "stylelint \"{site,components}/**/*.less\" --syntax less",
+  }
+}
+```
+### 6. 代码提交校验
+
+```js
+{
+  "scripts": {
+    "prepare": "husky install"
+  }
+}
+```

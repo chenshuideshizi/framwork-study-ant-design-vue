@@ -3,10 +3,9 @@ import { createMarkdownToVueRenderFn } from '../md/markdownToVue';
 
 
 export default (options = {}) => {
-  // console.log('---------options', options)
   const { root, markdown } = options;
-  const vueToMarkdown = createVueToMarkdownRenderFn(root);
-  const markdownToVue = createMarkdownToVueRenderFn(root, markdown);
+  const vueToMarkdown = createVueToMarkdownRenderFn();
+  const markdownToVue = createMarkdownToVueRenderFn();
   return {
     name: 'vueToMdToVue',
     async transform(code, id) {
@@ -15,7 +14,7 @@ export default (options = {}) => {
         id.indexOf('/examples/App.vue') > -1 // 或 example/app.vue
       ) {
         console.log('id', id)
-        const res = vueToMarkdown(code, id);
+        const res = vueToMarkdown(code);
         // transform .md files into vueSrc so plugin-vue can handle it
         return {
           code: res.ignore ? res.vueSrc : (await markdownToVue(res.vueSrc, id)).vueSrc,
